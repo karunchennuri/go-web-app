@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"fmt"
+	"github.com/astaxie/beego"
 )
 
 type TestController struct {
@@ -9,11 +9,21 @@ type TestController struct {
 }
 
 func (t *TestController) Get() {
-	fmt.Println("*** Inside test.Get() ****")
+	beego.Info("*** Inside test.Get() ****")
+	token := t.Ctx.Input.Param("token")
+	beego.Debug("token in test =", token)
+	beego.Info("*** token in test =", token)
+
 	t.TplName = "test.html"
 }
 
 func (t *TestController) ShowToTODO() {
-	fmt.Println("*** Inside test.ShowToTODO() ****")
+	beego.Info("*** Inside test.ShowToTODO() ****")
+
+	token := t.Ctx.Input.Param("token")
+	beego.Debug("token in test =", token)
+	beego.Info("*** token in test =", token)
+
 	t.TplName = "tasklist.html"
 }
+

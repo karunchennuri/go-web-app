@@ -5,8 +5,7 @@ import (
 	"strconv"
 
 	"github.com/astaxie/beego"
-	"hwcloudapp/models"
-	"fmt"
+	"go-web-app/models"
 )
 
 type TaskController struct {
@@ -23,7 +22,7 @@ type TaskController struct {
 func (tc *TaskController) ListTasks() {
 	//tc.TplName = "tasklist.html"
 	u := tc.GetSession("User")
-	fmt.Println("*** session obj=", u)
+	beego.Info("*** session obj=", u)
 	res := struct{ Tasks []*models.Task }{models.DefaultTaskList.All()}
 	tc.Data["json"] = res
 	tc.ServeJSON()
@@ -37,7 +36,7 @@ func (tc *TaskController) ListTasks() {
 //   req: POST /task/ {"Title": "Buy bread"}
 //   res: 200
 func (tc *TaskController) NewTask() {
-	fmt.Println("**** Inside NewTask ***")
+	beego.Info("**** Inside NewTask ***")
 	tc.TplName = "tasklist.html"
 	req := struct{ Title string }{}
 	if err := json.Unmarshal(tc.Ctx.Input.RequestBody, &req); err != nil {
@@ -51,7 +50,7 @@ func (tc *TaskController) NewTask() {
 		tc.Ctx.Output.Body([]byte(err.Error()))
 		return
 	}
-	fmt.Println("before save =", t)
+	beego.Info("before save =", t)
 	models.DefaultTaskList.Save(t)
 }
 

@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	_ "hwcloudapp/routers"
+	_ "go-web-app/routers"
 	"github.com/beego/i18n"
 )
 

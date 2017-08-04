@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"fmt"
 	"strings"
 	"github.com/beego/i18n"
 )
@@ -37,7 +36,7 @@ type baseController struct {
 func (bc *baseController) Prepare() {
 	//bc.Layout = "layout.tpl"
 	bc.EnableRender = true
-	fmt.Println("*** Inside default.Prepare() ***")
+	beego.Info("*** Inside default.Prepare() ***")
 	// Reset language option.
 	bc.Lang = "" // This field is from i18n.Locale.
 
@@ -65,6 +64,6 @@ type MainController struct {
 }
 
 func (m *MainController) Get() {
-	fmt.Println("*** Inside default.Get() ***")
+	beego.Info("*** Inside default.Get() ***")
 	m.TplName = "login.html"
 }

@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"hwcloudapp/controllers"
+	"go-web-app/controllers"
 	"github.com/astaxie/beego"
 )
 
